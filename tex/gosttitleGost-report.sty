@@ -1,0 +1,39 @@
+\renewenvironment*{titlepage}{
+ \thispagestyle{empty}
+  \linespread{1.5}\normalsize
+    \begin{centering}
+
+        \Report@OrgLongName \\
+        \Report@University \\
+        \vspace{5ex}
+        \Report@Department \\
+        \vspace{3ex}
+        \vfill
+        \Report@ReportName~\Report@About \\
+        \Report@TitleAndSubject \\        % Report Subject
+        \Report@Variant \\
+        \vspace{2ex}
+
+        \vfill
+    \end{centering}
+    \hspace{-12.5mm}
+    \begin{tabular}{ll}
+        Выполнил: & \\
+        студент гр. \Report@IspPost & \hspace{6cm} \Report@IspName \\
+        Проверил: & \\
+        \Report@ManagerPost & \hspace{6cm} \Report@ManagerName
+    \end{tabular}
+    \begin{centering}
+        \vfill
+
+        \vfill
+
+        \Report@Town~\Report@Year
+
+    \end{centering}
+    \linespread{\Gost@LineSpread}\normalsize
+    \setlength{\parskip}{\savedparskip}
+}
+
+
+

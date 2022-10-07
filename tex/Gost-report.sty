@@ -1,0 +1,158 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Элементы оформления титульной страницы
+
+% Organization name
+\newcommand\Report@OrgLongName{
+    \vspace{1ex}
+    \hrule
+    \vspace{1ex}
+    {\footnotesize федеральная организация}
+}
+\newcommand\ReportOrgLongName[1]{\renewcommand\Report@OrgLongName{#1}}
+
+% University name
+\newcommand\Report@University{
+    \vspace{1ex}
+    \hrule
+    \vspace{1ex}
+    {\footnotesize наименование университета }
+}
+\newcommand\ReportUniversity[1]{\renewcommand\Report@University{#1}}
+
+
+% Departament name
+\newcommand\Report@Department{
+    \vspace{1ex}
+    \hrule
+    \vspace{1ex}
+    {\footnotesize факультет }
+}
+\newcommand\ReportDepartment[1]{\renewcommand\Report@Department{#1}}
+
+
+
+
+% Report Name
+\newcommand*\Report@ReportName{Отчёт}
+\newcommand\ReportReportName[1]{\renewcommand\Report@ReportName{#1}}        % to change otchet name text
+
+% Report about text
+\newcommand*\Report@About{по домашнему заданию}
+\newcommand\ReportAbout[1]{\renewcommand\Report@About{#1}}      % to change otchet about text
+
+% Report Year
+\newcommand\Report@Year{\the\year}
+\newcommand*\ReportYear[1]{\renewcommand\Report@Year{#1}} % Year of report changeable
+
+\newcommand\Report@Town{}
+\newcommand*\ReportTown[1]{\renewcommand\Report@Town{#1}}%%virens added: указываем город написания отчёта
+
+% Head manager stamp
+\newcommand\Report@ManagerStamp{\vspace{-2ex}}
+\newcommand\Report@ManagerPost{
+    Должность и учёная степень
+}
+\newcommand\Report@ManagerName{\makebox[5em]{\ulfill}}
+
+\newcommand*\ReportManager[3][0.49]{
+    \renewcommand\Report@ManagerPost{#2} 
+    \renewcommand\Report@ManagerName{#3}
+    \renewcommand\Report@ManagerStamp{
+        \parbox[t]{#1\linewidth}{
+            {\raggedright\Report@ManagerPost
+                
+            }
+            \bigskip
+            \ulfill~\Report@ManagerName
+        }
+    }
+} % ID of head of research
+\newcommand*\ReportManagerStamp[1]{\renewcommand\Report@ManagerStamp{#1}} % Changeable ID Manager stamp
+
+% Head executor of research
+\newcommand\Report@IspStamp[1]{\vspace{-2ex}}
+\newcommand\Report@IspPost{
+    Номер группы
+}
+\newcommand\Report@IspName{\makebox[5em]{\ulfill}}
+\newcommand*\ReportIsp[3][0.49]{
+    \renewcommand\Report@IspPost{#2}\renewcommand\Report@IspName{#3}
+    \renewcommand\Report@IspStamp[1]{
+        \parbox[t]{#1\linewidth}{
+            {\raggedright\Report@IspPost
+
+            }
+            \bigskip
+            \ulfill~\Report@IspName
+        }
+    }
+} % ID of head executor of research
+\newcommand*\ReportIspStamp[1]{\renewcommand\Report@IspStamp{#1}}     % Changeable head executor stamp
+
+%fix for first time compilation
+\newcommand\Report@Title{\vspace{-2ex}}
+\newcommand\Report[1]{\renewcommand\Report@Title{#1}}  %Название НИР, не совместимо с \ReportTitle  
+\newcommand\Report@TitleAndSubject{
+
+}
+
+%
+% The simple case when the subject of the report is the same
+% as the Report title -- like in example 2 in ГОСТ 7.32-2001 ред. 2009 года.pdf:
+
+%
+% Optionally, specify a different report subject:
+\newcommand\ReportSubjectWithModifier[1]{%
+  \renewcommand\Report@TitleAndSubject{%
+    \Report@Title \\
+    %\vspace{1ex}
+    %\par
+    \ReportSubjectModifier{#1}
+  }%
+}
+
+\newcommand\ReportSubject[1]{%
+  \renewcommand\Report@TitleAndSubject{%
+    \Report@Title \\
+    %\vspace{1ex}
+    %\par
+    \ReportSubjectSimpleModifier{#1}
+  }%
+}
+
+%
+% The default modifier is as in example 1 in ГОСТ 7.32-2001 ред. 2009 года.pdf:
+
+\newcommand\ReportSubjectSimpleModifier{}
+
+% "по теме:"
+\newcommand\ReportSubjectModifier{%
+  по~теме: \\
+}
+
+\newcommand\Report@Variant{}
+\newcommand*\ReportVariant[1]{\renewcommand\Report@Variant{#1}}
+%
+% A switch for the variant of the modifier as
+% in example 3 in ГОСТ 7.32-2001 ред. 2009 года.pdf:
+% (empty)
+\newcommand*\ReportBareSubject[1]{%
+  \renewcommand\ReportSubjectModifier{}%
+}
+
+\RequirePackage{etoolbox}%                                  For \newrobustcmd
+\def\beamer@calltheme#1#2#3{%
+    \def\beamer@themelist{#2}%
+    \@for\beamer@themename:=\beamer@themelist\do
+    {\usepackage[{#1}]{#3\beamer@themename}}}
+
+%  \newrobustcmd*\gosttitle[2][]{\beamer@calltheme{#1}{#2}{gosttitle}}
+
+\def\maketitle{\titlepage}
+
+
+
+%Title page 
+%\newenvironment*{titlepage}{}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%

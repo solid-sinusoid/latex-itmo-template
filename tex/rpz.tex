@@ -1,0 +1,52 @@
+%% Преамбула TeX-файла
+
+% 1. Стиль и язык
+\documentclass[utf8x, 14pt]{G7-32} % Стиль (по умолчанию будет 14pt)
+
+% Остальные стандартные настройки убраны в preamble.inc.tex.
+\include{preamble.inc}
+
+% Настройки листингов.
+\ifPDFTeX
+\include{listings.inc}
+\else
+\usepackage{local-minted}
+\fi
+
+% Полезные макросы листингов.
+\include{macros.inc}
+
+% Стиль титульного листа и заголовки
+\include{tex/00-title.tex}
+
+\begin{document}
+
+\maketitle
+\frontmatter % выключает нумерацию ВСЕГО
+\tableofcontents % Содержание
+\include{tex/01-introduction.tex} % Введение
+\mainmatter % это включает нумерацию глав и секций в документе ниже
+\bgroup
+\titleformat{\chapter}
+   {\normalfont\bfseries}{\hspace{12.5mm}\thechapter}{0.5em}{}
+\titlespacing{\chapter}{0pt}{*4}{*1.5}
+
+\titleformat{\section}
+   {\normalfont\bfseries}{\hspace{12.5mm}\thesection}{0.5em}{}
+\titlespacing{\section}{0pt}{*4}{*1.5}
+
+%\titleformat{\section}
+%   {\normalfont\bfseries}{\thesection}{1em}{}
+\include{tex/02-mainpart.tex} % Основная часть
+\egroup
+\backmatter % Убирает нумерацию снова
+\include{tex/03-conclusion.tex} % Заключение
+\include{81-biblio} % Библиография
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
